@@ -50,10 +50,10 @@ body {
 	padding: 0;
 	font-family: $font-family;
 	font-size: $font-size;
-	overflow-y: scroll;
+	overflow-y: hidden;
 	overflow-x: hidden;
 	background: $bg;
-	background-image: url('./img/bg_3.jpg');
+	background-image: url('./img/bg_2.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 50% 100%;
