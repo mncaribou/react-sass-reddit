@@ -11,10 +11,17 @@ var ReactTransitionGroup = React.addons.TransitionGroup;
 
 var Content = React.createClass({
 	shouldComponentUpdate: function(newProps, newState) {
+
+		// cheat idea to have the parent propagate a new UID to signify state change
+		// versus trying to compare all the data passed
+
 		return this.props.uid !== newProps.uid;
 	},
 	render: function() {
-		console.log('content render');
+		
+		// use underscore to map all of the content (else empty array) to ContentItem components
+		// use the react 'key' attribute here so it can do its magic
+
 		var cr = _.map(this.props.data || [], function(r) {
 			return (<ContentItem key={r.data.id} data={r.data}/>);
 		});

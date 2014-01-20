@@ -9,6 +9,10 @@ var _ = require('underscore');
 
 var ContentItem = React.createClass({
 	shouldComponentUpdate: function(newProps, newState) {
+
+		// this really isn't needed, future enhancements could
+		// update the component with 'live' data
+
 		return false;
 	},
 	render: function() {
