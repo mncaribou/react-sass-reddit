@@ -36,13 +36,13 @@ var app = React.createClass({
 
 	},
 	viewSubreddit: function(n) {
-		this.setState({current: n, menuOpen: false});
-		request.get('http://www.reddit.com/r/' + n + '/hot.json').end(this.loadSubreddit);
+		this.setState({current: 'Loading...', menuOpen: false, currentData: [], currentUID: _.uniqueId() });
+		request.get('http://www.reddit.com/r/' + n + '/hot.json').end(this.loadSubreddit.bind(this,n));
 	},
-	loadSubreddit: function(s) {
+	loadSubreddit: function(n,s) {
 		this.refs.content.getDOMNode().scrollTop = 0;
 		var newCurrentData = s.body.data.children;
-		this.setState({ currentData: newCurrentData, currentUID: _.uniqueId() });
+		this.setState({ current: n, currentData: newCurrentData, currentUID: _.uniqueId() });
 	},
 	loadAllSubreddits: function(r) {
 		var newSubreddits = [{ data: {id:'all',display_name:'all'} }].concat(r.body.data.children);
@@ -57,14 +57,17 @@ var app = React.createClass({
 			'st-menu-open': this.state.menuOpen,
 			'st-effect-8': true
 		});
+		var display = (this.state.currentData.length > 0)
+						? (<Content uid={this.state.currentUID} data={this.state.currentData} />)
+						: (<div className="spinner"></div>);
 		return (
 			<div className={ccs}>
-				<Header onMenuToggle={this.onMenuToggle} current={this.state.current}/>
+				<Header onMenuToggle={this.onMenuToggle} status={this.state.current}/>
 				<div className="st-pusher">
 					<Menu subreddits={this.state.subreddits} />
 					<div ref="content" className="st-content">
 						<div className="st-content-inner"> 
-							<Content uid={this.state.currentUID} data={this.state.currentData} />
+							{display}
 						</div>
 					</div>
 				</div>
