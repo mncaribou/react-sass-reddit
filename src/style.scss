@@ -27,7 +27,7 @@ $media-large: 1000px;
 $media-medium: 700px;
 $media-small: 400px;
 
-$font-size : 14px;
+$font-size : 1em;
 $font-family : 'Lato', sans-serif;
 $font-title : 'Open Sans', sans-serif;
 $fa-font-path: './lib/fonts';
@@ -43,6 +43,7 @@ $fa-font-path: './lib/fonts';
 	-moz-box-sizing: border-box;
 	-ms-box-sizing: border-box;
 	box-sizing: border-box;
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
 }
  
 body {
@@ -98,6 +99,7 @@ header {
 		cursor: pointer;
 		font-weight: normal;
 		outline: none;
+		font-size: 1.2em;
 
 		i {
 			padding: 0 0.5em;
@@ -110,7 +112,7 @@ header {
 }
 
 .st-cols {
-	padding: 2em;
+	padding: 1em;
     width: 100%;
 
 	section {
@@ -129,7 +131,7 @@ header {
 		@media screen and (min-width: $media-large) {
 		   float: left;
 		   width: 25%;
-		   padding: 2em;
+		   padding: 1em;
 		}
 
 
@@ -359,6 +361,46 @@ header {
 	display: none;
 }
 
+
+
+.st-effect-6.st-container {
+	-webkit-perspective: 1500px;
+	perspective: 1500px;
+}
+
+.st-effect-6 .st-pusher {
+	-webkit-transform-origin: 0% 50%;
+	transform-origin: 0% 50%;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+}
+
+.st-effect-6.st-menu-open .st-pusher {
+	-webkit-transform: translate3d($menu-width, 0, 0) rotateY(-15deg);
+	transform: translate3d($menu-width, 0, 0) rotateY(-15deg);
+}
+
+.st-effect-6 .st-menu {
+	-webkit-transform: translate3d(-100%, 0, 0);
+	transform: translate3d(-100%, 0, 0);
+	-webkit-transform-origin: 100% 50%;
+	transform-origin: 100% 50%;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+}
+
+.st-effect-6.st-menu-open .st-menu {
+	visibility: visible;
+	-webkit-transition: -webkit-transform 0.5s;
+	transition: transform 0.5s;
+	-webkit-transform: translate3d(-100%, 0, 0) rotateY(15deg);
+	transform: translate3d(-100%, 0, 0) rotateY(15deg);
+}
+
+.st-effect-6 .st-menu::after {
+	display: none;
+}
+
 /* Effect 7: 3D rotate in */
 
 .st-effect-7.st-container {
@@ -433,6 +475,46 @@ header {
 
 .st-effect-8 .st-menu::after {
 	display: none;
+}
+
+/* Effect 14: Delayed 3D rotate */
+
+.st-effect-14.st-container {
+	-webkit-perspective: 1500px;
+	perspective: 1500px;
+	-webkit-perspective-origin: 0% 50%;
+	perspective-origin: 0% 50%;
+}
+
+.st-effect-14 .st-pusher {
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+}
+
+.st-effect-14.st-menu-open .st-pusher {
+	-webkit-transform: translate3d($menu-width, 0, 0);
+	transform: translate3d($menu-width, 0, 0);
+}
+
+.st-effect-14 .st-menu {
+	-webkit-transform: translate3d(-100%, 0, 0) rotateY(90deg);
+	transform: translate3d(-100%, 0, 0) rotateY(90deg);
+	-webkit-transform-origin: 0% 50%;
+	transform-origin: 0% 50%;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+}
+
+.st-effect-14.st-menu-open .st-menu {
+	visibility: visible;
+	-webkit-transition-delay: 0.1s;
+	transition-delay: 0.1s;
+	-webkit-transition-timing-function: ease-in-out;
+	transition-timing-function: ease-in-out;
+	-webkit-transition-property: -webkit-transform;
+	transition-property: transform;
+	-webkit-transform: translate3d(-100%, 0, 0) rotateY(0deg);
+	transform: translate3d(-100%, 0, 0) rotateY(0deg);
 }
 
 .spinner {

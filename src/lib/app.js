@@ -99,7 +99,7 @@ var app = React.createClass({
 						: (<div className="spinner"></div>);
 
 		// render layout, based on codrops sample plus some enhancements
-		
+
 		return (
 			<div className={ccs}>
 				<Header onMenuToggle={this.onMenuToggle} status={this.state.current}/>

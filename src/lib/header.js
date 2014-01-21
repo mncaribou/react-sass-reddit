@@ -11,8 +11,8 @@ var Header = React.createClass({
 
 		// use awesome font to render header
 		return (
-			<header>
-				<h2 onClick={this.props.onMenuToggle}><i className="st-toggle fa fa-bars"></i> Hello Reddit <i className='fa fa-caret-right'></i> <span>{this.props.status}</span></h2>
+			<header> 
+				<h2 onClick={this.props.onMenuToggle}><i className="st-toggle fa fa-bars"></i> Reddit <i className='fa fa-chevron-right'></i> <span>{this.props.status}</span></h2>
 			</header>
 		);
 	}
